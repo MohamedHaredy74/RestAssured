@@ -1,48 +1,29 @@
 [
-
     {
-      "username": "Beulah Wiza",
-      "firstname": "Geraldine",
-      "lastname": "Schimmel",
-      "email": "Agnes51@example.org",
+      "username": "Hareedy",
+      "firstname": "Mohamed",
+      "lastname": "Ahmed",
+      "email": "Hareedy@example.org",
       "password": "Pf0qt62Lp_777B4",
       "phone": "349-621-6644",
-      "id": "2"
+      "id": "1"
     },
     {
-    "username": "Gladys Paucek MD",
-    "firstname": "Matilda",
-    "lastname": "Osinski",
-    "email": "Darian_Conroy@example.net",
+    "username": "Andeelovic",
+    "firstname": "Mohamed",
+    "lastname": "Andel",
+    "email": "Kandel_85@example.net",
     "password": "DAvdctXufA1wkoT",
     "phone": "463.214.6960 x56825",
-    "id": "5"
+    "id": "2"
     },
     {
-      "username": "Merle Schmidt",
-      "firstname": "Darryl",
-      "lastname": "Quitzon",
-      "email": "Marisa62@example.org",
+      "username": "Genooo",
+      "firstname": "Mahmoud",
+      "lastname": "Fathy",
+      "email": "Elgendy@example.org",
       "password": "FIH5BIYsGqFE3Mz",
       "phone": "252.535.1632 x58921",
       "id": "3"
-    },
-    {
-      "username": "Ms. Lionel Zboncak",
-      "firstname": "Noble",
-      "lastname": "Prosacco",
-      "email": "Rodolfo_Schroeder@example.org",
-      "password": "WHe1pWjRaN0sNq5",
-      "phone": "(714) 594-1096 x91885",
-      "id": "4"
-    },
-   {
-    "username": "Jonathon Lehner",
-    "firstname": "Trisha",
-    "lastname": "Boehm",
-    "email": "Retta.Gleason76@example.org",
-    "password": "kyl2oKHsK3VJO3m",
-    "phone": "646.567.1253 x504",
-    "id": "1"
-   }
+    }
   ]

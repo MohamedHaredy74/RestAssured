@@ -5,8 +5,6 @@ import api.utils.UserData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Step;
-import static io.qameta.allure.Allure.step;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
@@ -20,15 +18,15 @@ public class UserTests {
     @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class)
     public void createUserStatusCode200(Object userPayload)
     {
-        step("Send the post request");
+       // step("Send the post request");
         Response response=
         UserEndPoints.createUser(userPayload);
         response.then().log().ifError();
-        step("Verify status code 200");
+        //step("Verify status code 200");
         Assert.assertEquals(response.getStatusCode(),200);
-        step("verify content-type header");
+        //step("verify content-type header");
         Assert.assertEquals(response.header("content-type"),"application/json");
-        step("verify response Time");
+       // step("verify response Time");
         Assert.assertTrue(response.time() < 3000);
     }
 
@@ -38,17 +36,17 @@ public class UserTests {
     @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class)
     public void getUserByName(Object username)
     {
-        step("Send the get user request");
+        //step("Send the get user request");
         String userName= username.toString();
         Response response=
                 UserEndPoints.getUser(username);
-        step("print the response ");
+        //step("print the response ");
         response.prettyPrint();
-        step("Verify status code 200 ");
+        //step("Verify status code 200 ");
         Assert.assertEquals(response.getStatusCode(),200);
-        step("verify body-username attribute");
+       // step("verify body-username attribute");
         Assert.assertEquals(response.body().jsonPath().get("username"),userName);
-        step("verify access-control-allow-headers");
+        //step("verify access-control-allow-headers");
         Assert.assertEquals(response.getHeader("access-control-allow-headers"),
                 "Content-Type, api_key, Authorization");
 
@@ -59,16 +57,16 @@ public class UserTests {
     @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class)
     public void updateUserByName(Object payload)
     {
-        step("send the update request");
+       // step("send the update request");
         JSONObject jsonObject= (JSONObject) payload;
         String username=jsonObject.get("username").toString();
         Response response=
                 UserEndPoints.updateUser(payload,username);
-        step("verify status code 200");
+        //step("verify status code 200");
         Assert.assertEquals(response.statusCode(),200);
-        step("verify body-type attribute");
+      //  step("verify body-type attribute");
         Assert.assertEquals(response.body().jsonPath().get("type"),"unknown");
-        step("verify content-type header");
+      //  step("verify content-type header");
         Assert.assertEquals(response.getHeader("content-type"),"application/json");
 
     }
@@ -79,13 +77,13 @@ public class UserTests {
     @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class)
     public void deleteUserByName(Object username)
     {
-        step("sent delete user request");
+        //step("sent delete user request");
         Response response=
                 UserEndPoints.deleteUser(username);
         response.then().log().ifError();
-        step("verify status code 200");
+        //step("verify status code 200");
         Assert.assertEquals(response.statusCode(),200);
-        step(" sent get user request to verify deleting request");
+        //step(" sent get user request to verify deleting request");
         UserEndPoints.getUser(username).then().statusCode(404);
 
     }
