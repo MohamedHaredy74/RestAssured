@@ -15,7 +15,7 @@ public class UserTests {
 
     @Description("Test1: create multiple users using json data file ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class,description = "Create a user ")
+    @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class,description = "Create a User ")
     public void createUserStatusCode200(Object userPayload)
     {
        // step("Send the post request");
@@ -33,7 +33,7 @@ public class UserTests {
 
     @Description("Test2: get a created users using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a user")
+    @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a User")
     public void getUserByName(Object username)
     {
         //step("Send the get user request");
@@ -54,7 +54,7 @@ public class UserTests {
 
     @Description("Test3: update a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class ,description = "Update the user data")
+    @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class ,description = "Update the User data")
     public void updateUserByName(Object payload)
     {
        // step("send the update request");
@@ -74,7 +74,7 @@ public class UserTests {
 
     @Description("Test4: delete a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a specific user ")
+    @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a Specific User ")
     public void deleteUserByName(Object username)
     {
         //step("sent delete user request");
