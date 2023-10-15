@@ -6,7 +6,8 @@
  --Allure report as a reporting tool  
  --Maven as a test managment tool  
  --Testng framework to organize test flow  
- --POM as a 'design Patern 
+ --POM as a 'design Patern   
+ --jenkins as a CI tool  
  --Using [Swagger api - User Model ]{https://petstore.swagger.io/#/user}  
 
  ## Scinarios coverd in this repo 
