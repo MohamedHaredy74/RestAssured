@@ -34,7 +34,7 @@ public class UserTests {
     @Description("Test2: get a created users using username ")
     @Severity(SeverityLevel.CRITICAL)
     @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a User")
-    public void getUserByName(Object username)
+    public void getUserByName(String username)
     {
         //step("Send the get user request");
         String userName= username.toString();
@@ -75,7 +75,7 @@ public class UserTests {
     @Description("Test4: delete a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
     @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a Specific User ")
-    public void deleteUserByName(Object username)
+    public void deleteUserByName(String username)
     {
         //step("sent delete user request");
         Response response=
@@ -86,6 +86,15 @@ public class UserTests {
         //step(" sent get user request to verify deleting request");
         UserEndPoints.getUser(username).then().statusCode(404);
 
+    }
+
+
+    @Test(dataProvider = "usernames-passwords",dataProviderClass = UserData.class)
+    private void login(String username ,String password)
+    {
+        Response response=UserEndPoints.login(username,password);
+        Assert.assertEquals(response.statusCode(),200);
+        response.prettyPrint();
     }
 
 

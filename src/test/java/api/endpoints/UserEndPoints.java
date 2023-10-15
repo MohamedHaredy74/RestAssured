@@ -21,7 +21,6 @@ public class UserEndPoints {
         return response;
     }
 
-
     public static Response getUser(Object username)
     {
         Response response=
@@ -33,6 +32,20 @@ public class UserEndPoints {
 
         return response;
     }
+
+    public static Response login(String username ,String password)
+    {
+        Response response=
+                given().filter(new AllureRestAssured())
+                        .accept(ContentType.JSON)
+                        .queryParam("username",username)
+                        .queryParam("password",password)
+                        .when()
+                        .get(Routes.login_user_url);
+
+        return response;
+    }
+
 
     public static Response updateUser(Object payload ,String username)
     {

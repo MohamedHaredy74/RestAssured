@@ -6,6 +6,7 @@ public class Routes {
 
     //user routes
     public static String get_user_url=baseUrl+"/user/{username}";
+    public static String login_user_url=baseUrl+"/user/login";
     public static String post_user_url=baseUrl+"/user";
     public static String put_user_url=baseUrl+"/user/{username}";
     public static String delete_user_url=baseUrl+"/user/{username}";

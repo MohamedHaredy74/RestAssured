@@ -12,8 +12,9 @@ import java.io.IOException;
 
 public class UserData {
 
-    Object userDetails[];
-    Object usernames[];
+
+    String usernames[];
+    Object[] userDetails;
 
 
     @DataProvider(name = "user data payload")
@@ -23,13 +24,12 @@ public class UserData {
         FileReader dataFile =new FileReader("src/test/java/api/utils/userDetails.json");
         Object object=parser.parse(dataFile);
         JSONArray array= (JSONArray) object;
-        userDetails=new Object[array.size()];
+         userDetails=new Object[array.size()];
 
         for (int i=0 ; i < array.size();i++)
         {
             JSONObject jsonObject= (JSONObject) array.get(i);
             userDetails[i]=jsonObject;
-
         }
         return userDetails;
         }
@@ -41,15 +41,34 @@ public class UserData {
         FileReader dataFile =new FileReader("src/test/java/api/utils/userDetails.json");
         Object object=parser.parse(dataFile);
         JSONArray array= (JSONArray) object;
-        usernames=new Object[array.size()];
+        usernames=new String[array.size()];
 
         for (int i=0 ; i < array.size();i++)
         {
             JSONObject jsonObject= (JSONObject) array.get(i);
-            usernames[i]=jsonObject.get("username");
+            usernames[i]=jsonObject.get("username").toString();
 
         }
         return usernames;
+    }
+
+    @DataProvider(name = "usernames-passwords")
+    public Object[][]readUsernameAndPassword() throws IOException, ParseException {
+
+        JSONParser parser=new JSONParser();
+        FileReader dataFile =new FileReader("src/test/java/api/utils/userDetails.json");
+        Object object=parser.parse(dataFile);
+        JSONArray array= (JSONArray) object;
+        String usernameAndPassword[][]=new String[array.size()][2];
+
+        for (int i=0 ; i < array.size();i++)
+        {
+            JSONObject jsonObject= (JSONObject) array.get(i);
+            usernameAndPassword[i][0]=jsonObject.get("username").toString();
+            usernameAndPassword[i][1]=jsonObject.get("password").toString();
+
+        }
+        return usernameAndPassword;
     }
 
 
