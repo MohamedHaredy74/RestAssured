@@ -15,7 +15,7 @@ public class UserTests {
 
     @Description("Test1: create multiple users using json data file ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class)
+    @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class,description = "Create a user ")
     public void createUserStatusCode200(Object userPayload)
     {
        // step("Send the post request");
@@ -31,9 +31,9 @@ public class UserTests {
     }
 
 
-    @Description("Test2: get created users using username ")
+    @Description("Test2: get a created users using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class)
+    @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a user")
     public void getUserByName(Object username)
     {
         //step("Send the get user request");
@@ -52,9 +52,9 @@ public class UserTests {
 
     }
 
-    @Description("Test3: update the created users using username ")
+    @Description("Test3: update a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class)
+    @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class ,description = "Update the user data")
     public void updateUserByName(Object payload)
     {
        // step("send the update request");
@@ -72,9 +72,9 @@ public class UserTests {
     }
 
 
-    @Description("Test4: delete the created users using username ")
+    @Description("Test4: delete a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class)
+    @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a specific user ")
     public void deleteUserByName(Object username)
     {
         //step("sent delete user request");
