@@ -3,6 +3,7 @@ package api.tests;
 import api.endpoints.UserEndPoints;
 import api.utils.UserData;
 import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
@@ -15,6 +16,7 @@ public class UserTests {
 
     @Description("Test1: create multiple users using json data file ")
     @Severity(SeverityLevel.CRITICAL)
+    @Feature("Register")
     @Test(priority = 1,dataProvider = "user data payload",dataProviderClass = UserData.class,description = "Create a User ")
     public void createUserStatusCode200(Object userPayload)
     {
@@ -31,9 +33,22 @@ public class UserTests {
     }
 
 
-    @Description("Test2: get a created users using username ")
+    @Description("Test2 : login using created account ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 2,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a User")
+    @Feature("Login")
+    @Test(priority = 2, dataProvider = "usernames-passwords",dataProviderClass = UserData.class ,description = "login with Username and Password")
+    public void login(String username,String password)
+    {
+        Response response=UserEndPoints.login(username,password);
+        Assert.assertEquals(response.statusCode(),200);
+        response.prettyPrint();
+    }
+
+
+    @Description("Test3: get a created users using username ")
+    @Severity(SeverityLevel.CRITICAL)
+    @Feature("Login")
+    @Test(priority = 3,dataProvider = "usernames payload",dataProviderClass = UserData.class ,description = "Get a User")
     public void getUserByName(String username)
     {
         //step("Send the get user request");
@@ -49,12 +64,12 @@ public class UserTests {
         //step("verify access-control-allow-headers");
         Assert.assertEquals(response.getHeader("access-control-allow-headers"),
                 "Content-Type, api_key, Authorization");
-
     }
 
-    @Description("Test3: update a specific user using username ")
+    @Description("Test4: update a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 3,dataProvider = "user data payload",dataProviderClass = UserData.class ,description = "Update the User data")
+    @Feature("Rest user Data")
+    @Test(priority = 4,dataProvider = "user data payload",dataProviderClass = UserData.class ,description = "Update the User data")
     public void updateUserByName(Object payload)
     {
        // step("send the update request");
@@ -71,10 +86,10 @@ public class UserTests {
 
     }
 
-
-    @Description("Test4: delete a specific user using username ")
+    @Description("Test5: delete a specific user using username ")
     @Severity(SeverityLevel.CRITICAL)
-    @Test(priority = 4,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a Specific User ")
+    @Feature("Delete Account")
+    @Test(priority = 5,dataProvider = "usernames payload",dataProviderClass = UserData.class , description = "Delete a Specific User ")
     public void deleteUserByName(String username)
     {
         //step("sent delete user request");
@@ -85,18 +100,7 @@ public class UserTests {
         Assert.assertEquals(response.statusCode(),200);
         //step(" sent get user request to verify deleting request");
         UserEndPoints.getUser(username).then().statusCode(404);
-
     }
-
-
-    @Test(dataProvider = "usernames-passwords",dataProviderClass = UserData.class)
-    private void login(String username ,String password)
-    {
-        Response response=UserEndPoints.login(username,password);
-        Assert.assertEquals(response.statusCode(),200);
-        response.prettyPrint();
-    }
-
 
 
 }

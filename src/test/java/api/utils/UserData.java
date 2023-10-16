@@ -66,7 +66,6 @@ public class UserData {
             JSONObject jsonObject= (JSONObject) array.get(i);
             usernameAndPassword[i][0]=jsonObject.get("username").toString();
             usernameAndPassword[i][1]=jsonObject.get("password").toString();
-
         }
         return usernameAndPassword;
     }
