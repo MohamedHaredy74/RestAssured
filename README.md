@@ -15,9 +15,9 @@
  -- How to get a user using get request  
  -- How to update a user using update request  
  -- How to delete a user using Delete request  
- -- How to verify response status code 
+ -- How to verify response status code   
  -- How to verify response Body  
- -- How to Extract Body 
+ -- How to Extract Body   
  -- How to verify response header  
  -- How to verify response Time 
 
